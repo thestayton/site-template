@@ -2,12 +2,14 @@
 export const theme = {
   // Core palette
   colorBg: '#ffffff',
-  colorSurface: '#f9fafb',
-  colorBorder: '#e5e7eb',
-  colorText: '#111827',
-  colorTextMuted: '#6b7280',
-  colorAccent: '#2563eb',
-  colorAccentHover: '#1d4ed8',
+  colorBgAlt: '#f8fafc',
+  colorSurface: '#f1f5f9',
+  colorBorder: '#e2e8f0',
+  colorText: '#0f172a',
+  colorTextMuted: '#64748b',
+  colorAccent: '#0f172a',
+  colorAccentFg: '#ffffff',
+  colorAccentHover: '#1e293b',
 
   // Typography
   fontBody: "'Inter', system-ui, sans-serif",
@@ -16,8 +18,13 @@ export const theme = {
   fontSizeBase: '16px',
   lineHeight: '1.7',
 
+  // Google Fonts import URL (leave empty string to skip)
+  googleFonts: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap',
+
   // Layout
-  maxWidth: '720px',
-  radiusCard: '8px',
-  spacingSection: '4rem',
+  maxWidth: '1100px',
+  contentWidth: '720px',
+  radiusCard: '12px',
+  radiusBtn: '8px',
+  spacingSection: '5rem',
 };
