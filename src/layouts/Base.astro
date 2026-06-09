@@ -7,19 +7,21 @@ import '../styles/global.css';
 interface Props {
   title?: string;
   description?: string;
+  fullWidth?: boolean;
 }
-const { title, description } = Astro.props;
+const { title, description, fullWidth = false } = Astro.props;
 const pageTitle = title ? `${title} — ${site.name}` : site.name;
 const pageDesc = description || site.description;
 
-// Build CSS custom properties from theme config
 const cssVars = `
   --color-bg: ${theme.colorBg};
+  --color-bg-alt: ${theme.colorBgAlt};
   --color-surface: ${theme.colorSurface};
   --color-border: ${theme.colorBorder};
   --color-text: ${theme.colorText};
   --color-text-muted: ${theme.colorTextMuted};
   --color-accent: ${theme.colorAccent};
+  --color-accent-fg: ${theme.colorAccentFg};
   --color-accent-hover: ${theme.colorAccentHover};
   --font-body: ${theme.fontBody};
   --font-heading: ${theme.fontHeading};
@@ -27,7 +29,9 @@ const cssVars = `
   --font-size-base: ${theme.fontSizeBase};
   --line-height: ${theme.lineHeight};
   --max-width: ${theme.maxWidth};
+  --content-width: ${theme.contentWidth};
   --radius-card: ${theme.radiusCard};
+  --radius-btn: ${theme.radiusBtn};
   --spacing-section: ${theme.spacingSection};
 `.trim();
 ---
@@ -40,15 +44,21 @@ const cssVars = `
     <title>{pageTitle}</title>
     <meta name="description" content={pageDesc} />
     <style set:html={`:root { ${cssVars} }`} />
+    {theme.googleFonts && <link rel="preconnect" href="https://fonts.googleapis.com" />}
+    {theme.googleFonts && <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />}
+    {theme.googleFonts && <link href={theme.googleFonts} rel="stylesheet" />}
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   </head>
   <body>
     <Nav />
-    <main style="max-width: var(--max-width); margin: 0 auto; padding: 2rem 1.5rem var(--spacing-section);">
-      <slot />
-    </main>
-    <footer style="text-align: center; padding: 2rem; color: var(--color-text-muted); font-size: 0.875rem; border-top: 1px solid var(--color-border);">
-      {site.footer}
+    {fullWidth
+      ? <main><slot /></main>
+      : <main class="page-content"><slot /></main>
+    }
+    <footer class="site-footer">
+      <div class="container">
+        <span>{site.footer}</span>
+      </div>
     </footer>
   </body>
 </html>
