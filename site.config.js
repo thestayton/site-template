@@ -1,11 +1,14 @@
 // Site identity — edit this for each new site
 export const site = {
-  name: 'Site Name',
-  description: 'A short description of this site.',
+  name: 'SiteName',
+  tagline: 'One compelling line about what this does.',
+  description: 'A short SEO description of this site.',
   url: 'https://yoursite.pages.dev',
   nav: [
-    { label: 'Home', href: '/' },
-    { label: 'About', href: '/about' },
+    { label: 'Features', href: '#features' },
+    { label: 'About', href: '#about' },
   ],
-  footer: '© 2026',
+  // Optional: renders a CTA button in the nav
+  navCta: { label: 'Get Started', href: '#cta' },
+  footer: '© 2026 SiteName',
 };
