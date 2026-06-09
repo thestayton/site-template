@@ -1,14 +1,226 @@
 ---
 import Base from '../layouts/Base.astro';
-import { getEntry } from 'astro:content';
-
-// Reads content/home.md
-const entry = await getEntry('pages', 'home');
-const { Content } = await entry.render();
+import { site } from '../../site.config.js';
 ---
 
-<Base>
-  <article class="prose">
-    <Content />
-  </article>
+<Base fullWidth>
+
+  <!-- HERO -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-content">
+        <p class="section-label">{site.tagline}</p>
+        <h1 class="hero-title">A compelling headline<br />that sells the value.</h1>
+        <p class="hero-sub">Two or three sentences about what this does. Focus on the outcome for the reader, not the features. Make them feel it.</p>
+        <div class="hero-actions">
+          <a href="#cta" class="btn btn-primary">Get Started</a>
+          <a href="#features" class="btn btn-ghost">Learn more ↓</a>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-num">10×</span>
+          <span class="stat-label">Faster than before</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">99%</span>
+          <span class="stat-label">Satisfaction rate</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">Zero</span>
+          <span class="stat-label">Setup required</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section id="features" class="features-section">
+    <div class="container">
+      <p class="section-label">Features</p>
+      <h2>Everything you need.</h2>
+      <p class="section-sub">Replace this with a sentence about why these features matter to your specific audience.</p>
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-icon">⚡</div>
+          <h3>Feature One</h3>
+          <p>Describe what this feature does and why it matters. Keep it outcome-focused.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🎯</div>
+          <h3>Feature Two</h3>
+          <p>Describe what this feature does and why it matters. Keep it outcome-focused.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🔒</div>
+          <h3>Feature Three</h3>
+          <p>Describe what this feature does and why it matters. Keep it outcome-focused.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">📊</div>
+          <h3>Feature Four</h3>
+          <p>Describe what this feature does and why it matters. Keep it outcome-focused.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🌍</div>
+          <h3>Feature Five</h3>
+          <p>Describe what this feature does and why it matters. Keep it outcome-focused.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">💡</div>
+          <h3>Feature Six</h3>
+          <p>Describe what this feature does and why it matters. Keep it outcome-focused.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="about-section">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text">
+          <p class="section-label">About</p>
+          <h2>Why this exists.</h2>
+          <p>Explain the problem you're solving. What was broken or frustrating before this?</p>
+          <p>Then explain your approach and what makes it different. This is where you build trust.</p>
+          <a href="#cta" class="btn btn-primary" style="margin-top: 1.5rem;">Get started →</a>
+        </div>
+        <div class="about-checklist">
+          <div class="check-item">
+            <span class="check-mark">✓</span>
+            <div>
+              <strong>Key benefit one</strong>
+              <p>One sentence expanding on this point.</p>
+            </div>
+          </div>
+          <div class="check-item">
+            <span class="check-mark">✓</span>
+            <div>
+              <strong>Key benefit two</strong>
+              <p>One sentence expanding on this point.</p>
+            </div>
+          </div>
+          <div class="check-item">
+            <span class="check-mark">✓</span>
+            <div>
+              <strong>Key benefit three</strong>
+              <p>One sentence expanding on this point.</p>
+            </div>
+          </div>
+          <div class="check-item">
+            <span class="check-mark">✓</span>
+            <div>
+              <strong>Key benefit four</strong>
+              <p>One sentence expanding on this point.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="cta" class="cta-section">
+    <div class="container">
+      <div class="cta-inner">
+        <h2>Ready to get started?</h2>
+        <p>One sentence about what you're offering and why now is the right time.</p>
+        <div class="hero-actions">
+          <a href="#" class="btn btn-primary">Primary CTA →</a>
+          <a href="#" class="btn btn-ghost">Secondary action</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
 </Base>
+
+<style>
+  /* HERO */
+  .hero-section {
+    padding: 7rem 0 5rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .hero-content { max-width: 680px; margin-bottom: 4rem; }
+  .hero-title { margin-bottom: 1.25rem; }
+  .hero-sub {
+    font-size: 1.15rem;
+    color: var(--color-text-muted);
+    margin-bottom: 2rem;
+    max-width: 540px;
+    line-height: 1.75;
+  }
+  .hero-actions { display: flex; gap: 0.875rem; flex-wrap: wrap; }
+  .hero-stats {
+    display: flex;
+    gap: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-border);
+    flex-wrap: wrap;
+  }
+  .stat-num {
+    display: block;
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+  .stat-label {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 500;
+  }
+
+  /* FEATURES */
+  .features-section { background: var(--color-bg-alt, var(--color-surface)); }
+  .features-section .card { background: var(--color-bg); }
+  .card-icon { font-size: 1.75rem; margin-bottom: 0.875rem; }
+  .card h3 { margin-bottom: 0.5rem; }
+  .card p { font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.65; margin: 0; }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .about-text p { color: var(--color-text-muted); margin-top: 1rem; }
+  .about-checklist { display: flex; flex-direction: column; gap: 1.5rem; }
+  .check-item { display: flex; gap: 1rem; align-items: flex-start; }
+  .check-mark {
+    flex-shrink: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    background: var(--color-accent);
+    color: var(--color-accent-fg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 800;
+    margin-top: 0.1rem;
+  }
+  .check-item strong { display: block; margin-bottom: 0.2rem; font-size: 0.95rem; }
+  .check-item p { font-size: 0.875rem; color: var(--color-text-muted); margin: 0; }
+
+  /* CTA */
+  .cta-section {
+    background: var(--color-bg-alt, var(--color-surface));
+    border-top: 1px solid var(--color-border);
+  }
+  .cta-inner { max-width: 560px; }
+  .cta-inner h2 { margin-bottom: 0.75rem; }
+  .cta-inner p { color: var(--color-text-muted); margin-bottom: 2rem; }
+
+  @media (max-width: 768px) {
+    .hero-section { padding: 5rem 0 3rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .hero-stats { gap: 2rem; }
+  }
+</style>
